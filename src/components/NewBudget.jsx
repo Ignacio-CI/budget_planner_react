@@ -7,7 +7,7 @@ const NewBudget = ({ presupuesto, setPresupuesto, setIsValidPresupuesto }) => {
   const handlePresupuesto = (e) => {
     e.preventDefault()
 
-    if(!(presupuesto) || (presupuesto) < 0) {
+    if(!presupuesto || presupuesto < 0) {
       setMensaje('No es un presupuesto valido');
       return;
     } 
