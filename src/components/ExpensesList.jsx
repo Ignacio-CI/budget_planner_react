@@ -1,7 +1,7 @@
 import React from 'react'
 import Expense from './Expense'
 
-const ExpensesList = ({ expenses }) => {
+const ExpensesList = ({ expenses, setGastoEditar }) => {
   return (
     <div className='listado-gastos contenedor'>
       <h2>{expenses.length ? 'Gastos' : 'No hay gastos aún'}</h2>
@@ -10,6 +10,7 @@ const ExpensesList = ({ expenses }) => {
           <Expense 
             key={expense.id}
             expense={expense}
+            setGastoEditar={setGastoEditar}
           />
       ))}
     </div>
