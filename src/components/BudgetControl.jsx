@@ -59,7 +59,7 @@ const BudgetControl = ({ expenses, setExpenses, presupuesto, setPresupuesto, set
                 type="button"
                 onClick={handleResetApp}
             >
-                Reset App
+                Resetear App
             </button>
             <p>
                 <span>Presupuesto: </span> {formatAmount(presupuesto)}

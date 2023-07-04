@@ -15,6 +15,7 @@ const Expense = ({ expense, setGastoEditar, eliminarGasto }) => {
     const { nombre, cantidad, categoria, id, fecha } = expense;
 
     const iconDictionary = {
+        ahorro: SavingIcon,
         comida: FoodIcon,
         casa: HouseIcon,
         gastos: ExpensesIcon,
