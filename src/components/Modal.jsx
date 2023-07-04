@@ -91,6 +91,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, saveExpense, gastoEditar
             onChange={e => setCategoria(e.target.value)}
           >
             <option value="">-- Seleccione --</option>
+            <option value="ahorro">Ahorro</option>
             <option value="comida">Comida</option>
             <option value="casa">Casa</option>
             <option value="gastos">Gastos Varios</option>

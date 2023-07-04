@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const BudgetControl = ({ expenses, presupuesto }) => {
+const BudgetControl = ({ expenses, setExpenses, presupuesto, setPresupuesto, setIsValidPresupuesto }) => {
     const [porcentaje, setPorcentaje] = useState(0);
     const [disponible, setDisponible] = useState(0);
     const [gastado, setGastado] = useState(0);
@@ -29,14 +29,24 @@ const BudgetControl = ({ expenses, presupuesto }) => {
         })
     }
 
+    const handleResetApp = () => {
+        const resultado = confirm('Deseas reiniciar presupuestos y gastos?');
+        
+        if(resultado){
+            setExpenses([]);
+            setPresupuesto(0);
+            setIsValidPresupuesto(false);
+        }
+    };
+
   return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
         <div>
             <CircularProgressbar 
                 styles={buildStyles({
-                    pathColor: '#3B82F6',
+                    pathColor: porcentaje > 100 ? '#DC2626' : '#3B82F6',
                     trailColor: '#F5F5F5',
-                    textColor: '#3B82F6'
+                    textColor: porcentaje > 100 ? '#DC2626' : '#3B82F6'
                 })} 
                 value={porcentaje} 
                 text={`${porcentaje}% gastado`}
@@ -44,10 +54,17 @@ const BudgetControl = ({ expenses, presupuesto }) => {
         </div>
 
         <div className="contenido-presupuesto">
+            <button
+                className="reset-app"
+                type="button"
+                onClick={handleResetApp}
+            >
+                Reset App
+            </button>
             <p>
                 <span>Presupuesto: </span> {formatAmount(presupuesto)}
             </p>
-            <p>
+            <p className={`${disponible < 0 ? 'negativo' : ''}`}>
                 <span>Disponible: </span> {formatAmount(disponible)}
             </p>
             <p>
